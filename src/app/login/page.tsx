@@ -29,7 +29,7 @@ export default function LoginPage() {
         <input className="p-2" type="text" placeholder="password" id="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
       </label>
 
-      <button className="border border-4 border-violet-800" onClick={onLogin}>
+      <button className=" border-4 border-violet-800" onClick={onLogin}>
         Login In
       </button>
       <Link href="/signup">SignUp visit</Link>

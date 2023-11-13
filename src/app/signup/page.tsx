@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 import { axios } from "axios";
 
 export default function SignUpPage() {
+  const router = useRouter();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
     username: "",
   });
+
+  const [buttonDisable, setButtonDisable] = React.useState(false);
 
   const onSignUp = async () => {
     console.log(user);
@@ -35,7 +38,7 @@ export default function SignUpPage() {
         <input className="p-2" type="text" placeholder="password" id="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
       </label>
 
-      <button className="border border-4 border-violet-800" onClick={onSignUp}>
+      <button className=" border-4 border-violet-800" onClick={onSignUp}>
         Sign Up
       </button>
       <Link href="/login">login visit</Link>
