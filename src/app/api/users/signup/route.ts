@@ -1,10 +1,10 @@
 import { connect } from "@/dbConfig/dbConfig";
-import User from '@/models/userModel'
-import bcryptjs from 'bcryptjs';
+import User from '@/models/userModel';
+import bycryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
 
-connect()
+connect();
 
 export async function POST(request: NextRequest) {
 
@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'user exist already' }, { status: 400 })
         }
 
-        const salt = await bcryptjs.genSalt(10)
-        const hashedPassword = await bcryptjs.hash(password, salt)
+        const salt = await bycryptjs.genSalt(10)
+        const hashedPassword = await bycryptjs.hash(password, salt)
 
         const newUser = new User({
             username,

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { axios } from "axios";
+import axios from "axios";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -17,6 +17,9 @@ export default function SignUpPage() {
 
   const onSignUp = async () => {
     console.log(user);
+    const reponse = await axios.post("/api/users/signup", user);
+    console.log(reponse);
+    router.push("/login");
   };
 
   return (

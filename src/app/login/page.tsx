@@ -3,9 +3,11 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { axios } from "axios";
+import axios from "axios";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [user, setUser] = React.useState({
     email: "",
     password: "",
@@ -13,6 +15,13 @@ export default function LoginPage() {
 
   const onLogin = async () => {
     console.log(user);
+    try {
+      const response = await axios.post("/api/users/login", user);
+      console.log("Login success", response.data);
+      router.push("/profile");
+    } catch (error: any) {
+      console.log("Login failed", error.message);
+    }
   };
 
   return (
